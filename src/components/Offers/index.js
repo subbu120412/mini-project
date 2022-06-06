@@ -35,13 +35,7 @@ class Offers extends Component {
 
   renderLoader = () => (
     <div testid="restaurants-offers-loader" className="loader-container">
-      <Loader
-        testid="restaurants-offers-loader"
-        type="Oval"
-        color="#F7931E"
-        height="40"
-        width="40"
-      />
+      <Loader type="Oval" color="#F7931E" height="40" width="40" />
     </div>
   )
 

@@ -97,13 +97,7 @@ class PopularRestaurants extends Component {
 
   renderLoader = () => (
     <div testid="restaurants-list-loader" className="loader-container">
-      <Loader
-        testid="restaurants-list-loader"
-        type="Oval"
-        color="#F7931E"
-        height="40"
-        width="40"
-      />
+      <Loader type="Oval" color="#F7931E" height="40" width="40" />
     </div>
   )
 
