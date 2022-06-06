@@ -1,0 +1,129 @@
+.popular-restaurants-container {
+  padding: 16px;
+}
+.popular-restaurants-heading {
+  font-family: DM Sans;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+  color: #183b56;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.filters-description-container {
+  display: flex;
+  flex-direction: column;
+}
+.popular-restaurants-description {
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #64748b;
+  margin-top: 8px;
+}
+.filter-container {
+  display: flex;
+  align-items: center;
+}
+.sorting-icon {
+  font-size: 24px;
+  color: #475569;
+}
+.sort-by {
+  margin-right: 8px;
+  margin-left: 8px;
+  font-family: DM Sans;
+  font-size: 16px;
+  font-weight: 500;
+  color: #475569;
+}
+.sorting-options {
+  height: 24px;
+  width: 112px;
+  border: none;
+  color: #475569;
+  font-family: DM Sans;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+
+  text-align: left;
+}
+.hr {
+  display: none;
+}
+@media (orientation: landscape) {
+  .popular-restaurants-container {
+    padding: 0px;
+  }
+  .filters-description-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .popular-restaurants-description {
+    font-size: 16px;
+  }
+  .hr {
+    display: block;
+
+    width: 100%;
+    border: solid 2px #cbd2d9;
+  }
+}
+.restaurants-list {
+  padding: 0px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+@media (orientation: landscape) {
+  .restaurants-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .popular-restaurants-heading {
+    margin-top: 48px;
+  }
+}
+.list-container {
+  display: flex;
+  flex-direction: column;
+}
+.pagination-container {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.active-page-status-container {
+  display: flex;
+  align-items: center;
+}
+.pagination-button {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px #183b56 solid;
+  height: 25px;
+  width: 25px;
+  margin-left: 16px;
+  margin-right: 16px;
+  cursor: pointer;
+}
+.page-text {
+  margin: 0px;
+  font-family: Bree Serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #334155;
+  text-align: center;
+}

@@ -1,0 +1,18 @@
+.counter-container {
+  display: flex;
+  width: 65%;
+}
+.counter-button {
+  background-color: transparent;
+  color: #3e4c59;
+  height: 24px;
+  width: 24px;
+  left: 200px;
+  top: 357px;
+  border-radius: 0px;
+  font-size: bold;
+}
+.food-item-count {
+  margin-left: 8px;
+  margin-right: 8px;
+}

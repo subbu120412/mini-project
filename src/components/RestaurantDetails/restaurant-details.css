@@ -1,0 +1,112 @@
+.restaurant-specific-details-container {
+  display: flex;
+  flex-direction: column;
+}
+.restaurant-about-container {
+  display: flex;
+  background-image: url('https://res.cloudinary.com/dfy3liyiq/image/upload/v1654311005/restaurant-bg_rpx3kx.png');
+  max-width: 100vw;
+  background-size: cover;
+  background-position: 80%;
+  height: 220px;
+}
+@media (orientation: landscape) {
+  .restaurant-about-container {
+    background-position: 0% 0%;
+    padding-left: 8%;
+    height: 300px;
+  }
+}
+.restaurant-loader-container {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.restaurant-detail-image {
+  position: relative;
+  height: 150px;
+  width: 40%;
+  border-bottom-right-radius: 120px;
+}
+@media (orientation: landscape) {
+  .restaurant-detail-image {
+    position: static;
+    border-radius: 10px;
+    height: 170px;
+    width: 275px;
+    align-self: center;
+  }
+}
+.restaurant-info-container {
+  margin-left: 16px;
+}
+@media (orientation: landscape) {
+  .restaurant-info-container {
+    align-self: center;
+    width: 50%;
+  }
+}
+.name {
+  height: 24px;
+  left: 169px;
+  top: 96px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.20000000298023224px;
+  text-align: left;
+  color: #ffffff;
+}
+.info-type {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 0px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.rating-cost-container {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+.info-rating {
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #ffffff;
+  margin: 0px;
+  margin-bottom: 8px;
+}
+.hr-1 {
+  height: 35px;
+  width: 1px;
+  border: #e2e8f0 solid 1px;
+  margin-left: 0px;
+  margin-right: 16px;
+}
+.info-container {
+  margin-right: 16px;
+}
+.food-items-list {
+  padding: 16px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+@media (orientation: landscape) {
+  .food-items-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,125 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.login-image {
+  height: 387px;
+  width: 387px;
+  position: relative;
+  top: -56px;
+  left: 86px;
+  border-radius: 200px;
+  align-self: flex-end;
+}
+@media (orientation: landscape) {
+  .login-container {
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-between;
+  }
+  .login-image {
+    position: static;
+    align-self: flex-start;
+    border-radius: 0px;
+    order: 1;
+    width: 50%;
+    height: 100vh;
+  }
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+.login-logo-container {
+  display: none;
+}
+.login-heading {
+  font-family: DM Sans;
+  font-size: 24px;
+  font-weight: 500;
+  color: #0f172a;
+  position: relative;
+  top: -110px;
+  left: 30px;
+}
+@media (orientation: landscape) {
+  .form-container {
+    align-self: center;
+    width: 34%;
+    box-shadow: 0px 8px 40px 0px #07070714;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding: 24px;
+  }
+  .login-logo-container {
+    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .login-heading {
+    position: static;
+    text-align: center;
+  }
+  .login-logo {
+    height: 50px;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  position: relative;
+  top: -100px;
+}
+@media (orientation: landscape) {
+  .form {
+    position: static;
+  }
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.input {
+  height: 40px;
+  width: 312px;
+  left: 0px;
+  padding-left: 16px;
+  top: 24px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  background-color: #e2e8f0;
+  width: 100%;
+}
+.label {
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  margin-bottom: 8px;
+}
+.login-button {
+  height: 40px;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  border-radius: 8px;
+  background-color: #f7931e;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
