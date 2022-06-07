@@ -106,6 +106,7 @@ class RestaurantDetails extends Component {
             <FoodItem foodItem={each} key={each.id} />
           ))}
         </ul>
+        <Footer />
       </div>
     )
   }
@@ -126,8 +127,6 @@ class RestaurantDetails extends Component {
       <div className="restaurant-specific-details-container">
         <Header />
         {isLoading ? this.renderLoader() : this.renderAboutRestaurant()}
-
-        <Footer />
       </div>
     )
   }

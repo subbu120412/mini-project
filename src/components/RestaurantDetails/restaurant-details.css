@@ -1,6 +1,12 @@
 .restaurant-specific-details-container {
   display: flex;
   flex-direction: column;
+  max-height: 100vh;
+}
+.restaurant-home {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 .restaurant-about-container {
   display: flex;
@@ -8,9 +14,9 @@
   max-width: 100vw;
   background-size: cover;
   background-position: 80%;
-  height: 220px;
+  min-height: 220px;
 }
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-width: 768px) {
   .restaurant-about-container {
     background-position: 0% 0%;
     padding-left: 8%;
@@ -30,7 +36,7 @@
   width: 40%;
   border-bottom-right-radius: 120px;
 }
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-width: 768px) {
   .restaurant-detail-image {
     position: static;
     border-radius: 10px;
@@ -42,7 +48,7 @@
 .restaurant-info-container {
   margin-left: 16px;
 }
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-width: 768px) {
   .restaurant-info-container {
     align-self: center;
     width: 50%;
@@ -104,9 +110,12 @@
   flex-direction: column;
   width: 100%;
 }
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-width: 768px) {
   .food-items-list {
     flex-direction: row;
     flex-wrap: wrap;
+    padding-left: 8%;
+    padding-right: 8%;
+    justify-content: space-between;
   }
 }

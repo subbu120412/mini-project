@@ -1,0 +1,15 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 5%;
+}
+.profile-image {
+  height: 300px;
+  width: 250px;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-family: bree serif;
+}

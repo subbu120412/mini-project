@@ -16,10 +16,12 @@ const Home = props => {
     <div className="home">
       <Header />
       <div className="home-body">
-        <Offers />
-        <PopularRestaurants sortByOptions={sortByOptions} />
+        <div className="home-list">
+          <Offers />
+          <PopularRestaurants sortByOptions={sortByOptions} />
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   )
 }

@@ -20,27 +20,10 @@ class Login extends Component {
     this.setState({passwordInput: event.target.value})
   }
 
-  onSubmitSuccess = jwtToken => {
-    const {history} = this.props
-
-    Cookies.set('jwt_token', jwtToken, {
-      expires: 30,
-      path: '/',
-    })
-    history.replace('/')
-  }
-
-  onSubmitFailure = errorMsg => {
-    this.setState({isInvalidLogin: true, errorMsg})
-  }
-
   submitForm = async event => {
     event.preventDefault()
     const {usernameInput, passwordInput} = this.state
-    const userDetails = {
-      username: usernameInput,
-      password: passwordInput,
-    }
+    const userDetails = {username: usernameInput, password: passwordInput}
     const loginUrl = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
@@ -51,9 +34,11 @@ class Login extends Component {
     const data = await response.json()
 
     if (response.ok === true) {
-      this.onSubmitSuccess(data.jwt_token)
+      Cookies.set('jwt_token', data.jwt_token, {expires: 30})
+      const {history} = this.props
+      history.replace('/')
     } else {
-      this.onSubmitFailure(data.error_msg)
+      this.setState({isInvalidLogin: true, errorMsg: data.error_msg})
     }
   }
 

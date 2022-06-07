@@ -54,7 +54,7 @@ class Cart extends Component {
     )
 
     return (
-      <div>
+      <div className="cart-items-list-container">
         <div className="cart-items-container">
           <div className="landscape-table-tags">
             <p className="tag">Item</p>
@@ -75,8 +75,7 @@ class Cart extends Component {
             <h1 className="total-price-heading">Order Total:</h1>
             <div className="total-price ">
               <p className="total-price">₹</p>
-              <p testid="total-price">{totalPrice}</p>
-              <p className="total-price">.00</p>
+              <p testid="total-price">{totalPrice.toFixed(2)}</p>
             </div>
           </div>
           <Link className="link place-order-button" to="/payment">
@@ -97,7 +96,7 @@ class Cart extends Component {
     }
     const {cartList} = this.state
     return (
-      <div>
+      <div className="cart-container">
         <Header />
         {cartList.length === 0 ? this.showEmptyCart() : this.showCartItems()}
       </div>

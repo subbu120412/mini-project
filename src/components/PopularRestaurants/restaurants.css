@@ -24,10 +24,11 @@
   text-align: left;
   color: #64748b;
   margin-top: 8px;
+  margin-right: 16px;
 }
 .filter-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 .sorting-icon {
   font-size: 24px;
@@ -40,6 +41,7 @@
   font-size: 16px;
   font-weight: 500;
   color: #475569;
+  margin-top: 0px;
 }
 .sorting-options {
   height: 24px;
@@ -86,7 +88,6 @@
   .restaurants-list {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
   .popular-restaurants-heading {
     margin-top: 48px;
@@ -126,4 +127,56 @@
   line-height: 24px;
   color: #334155;
   text-align: center;
+}
+.search-input-container {
+  display: flex;
+  align-items: center;
+  background-color: #cbd2d9;
+  margin-top: 0px;
+}
+.search-input {
+  border: none;
+  height: 40px;
+  background-color: transparent;
+  width: 90%;
+  padding-left: 12px;
+  font-size: 16px;
+  outline: none;
+}
+.search-button {
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  width: 10%;
+  background-color: transparent;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.failure-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 60vh;
+}
+.failure-heading {
+  margin: 0px;
+  font-size: 16px;
+  font-family: DM Sans;
+  font-size: 24px;
+  font-weight: 500;
+  color: coral;
+}
+.try-again-button {
+  background-color: coral;
+  border: none;
+  margin-top: 32px;
+  cursor: pointer;
+  color: transparent;
+  height: 45px;
+  font-size: 18px;
+  color: #ffffff;
+  border-radius: 8px;
 }

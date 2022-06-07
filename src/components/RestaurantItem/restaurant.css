@@ -4,10 +4,10 @@
   margin-bottom: 16px;
   align-items: center;
 }
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-width: 768px) {
   .restaurant-item {
     width: 290px;
-    margin-right: 16px;
+    margin-right: 54px;
   }
 }
 .restaurant-image {
@@ -21,20 +21,24 @@
 }
 .restaurant-name {
   font-family: DM Sans;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 24px;
   color: #334155;
   margin-top: 0px;
   text-align: left;
+  margin-bottom: 6px;
 }
 .cuisine {
   font-family: DM Sans;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 16px;
   color: #64748b;
   text-align: left;
+  margin: 0px;
+  margin-bottom: 6px;
+  font-weight: 500;
 }
 .rating-container {
   display: flex;
@@ -58,4 +62,15 @@
   text-align: left;
   margin: 0px;
   margin-left: 8px;
+}
+.open-class {
+  font-size: 12px;
+  color: green;
+  margin: 0px;
+  font-weight: 500;
+}
+.close-class {
+  font-size: 12px;
+  color: red;
+  margin: 0px;
 }

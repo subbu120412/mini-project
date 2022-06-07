@@ -109,8 +109,7 @@ class CartItem extends Component {
           </div>
           <div className="cart-item-price cart-item-price-container">
             <p className="cart-item-price">₹</p>
-            <p className="cart-item-price">{cost * quantity}</p>
-            <p className="cart-item-price">.00</p>
+            <p className="cart-item-price">{(cost * quantity).toFixed(2)}</p>
           </div>
         </div>
       </div>

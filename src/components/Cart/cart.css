@@ -1,3 +1,13 @@
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+}
+.cart-items-list-container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
 .empty-cart-container {
   display: flex;
   flex-direction: column;

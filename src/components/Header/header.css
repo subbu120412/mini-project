@@ -90,6 +90,10 @@
   padding: 0px;
   width: 50%;
 }
+.sm-profile {
+  margin-left: 8px;
+}
+
 @media (orientation: landscape) {
   .nav-bar {
     flex-direction: row;
@@ -101,7 +105,12 @@
     padding-right: 8%;
     padding-bottom: 8px;
   }
-
+  .sm-profile {
+    display: none;
+  }
+  .lg-profile {
+    margin-left: 16px;
+  }
   .desktop-menu-items {
     display: flex;
     width: 40%;
@@ -140,4 +149,8 @@
 }
 .active-link {
   color: #f7931e;
+}
+.profile-hamburger-container {
+  display: flex;
+  align-items: center;
 }

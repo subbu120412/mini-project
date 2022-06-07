@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {AiFillCloseCircle} from 'react-icons/ai'
+import {CgProfile} from 'react-icons/cg'
 import {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import './header.css'
@@ -45,13 +46,18 @@ class Header extends Component {
             </Link>
             <h1 className="tasty-kitchen">Tasty Kitchens</h1>
           </div>
-          <button
-            onClick={this.showHamburger}
-            className="menu-icon-button"
-            type="button"
-          >
-            <GiHamburgerMenu className="menu-icon" />
-          </button>
+          <div className="profile-hamburger-container">
+            <button
+              onClick={this.showHamburger}
+              className="menu-icon-button"
+              type="button"
+            >
+              <GiHamburgerMenu className="menu-icon" />
+            </button>
+            <Link to="/profile">
+              <CgProfile className="sm-profile" color="green" size="32" />
+            </Link>
+          </div>
         </div>
         <div className="desktop-menu-items">
           <ul className="desktop-menu-section">
@@ -70,6 +76,9 @@ class Header extends Component {
           <button onClick={this.logout} className="logout-button" type="button">
             Logout
           </button>
+          <Link to="/profile">
+            <CgProfile className="lg-profile" color="green" size="45" />
+          </Link>
         </div>
 
         {isHamburgerClicked && (

@@ -74,9 +74,21 @@
   position: relative;
   top: -100px;
 }
+.error-message {
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+
+  text-align: left;
+  color: #ef4444;
+}
 @media (orientation: landscape) {
   .form {
     position: static;
+  }
+  .error-message {
+    font-size: 16px;
   }
 }
 .input-container {

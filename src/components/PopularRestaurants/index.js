@@ -1,19 +1,40 @@
 import {Component} from 'react'
+
+import {GoSearch} from 'react-icons/go'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
-import {MdSort} from 'react-icons/md'
+import {BsFilterLeft} from 'react-icons/bs'
 import {GrNext, GrPrevious} from 'react-icons/gr'
 import './restaurants.css'
 import RestaurantItem from '../RestaurantItem'
 
+const sortByOptions = [
+  {
+    id: 0,
+    displayText: 'Highest',
+    value: 'Highest',
+  },
+  {
+    id: 2,
+    displayText: 'Lowest',
+    value: 'Lowest',
+  },
+]
+
+const apiStatusComponent = {
+  initial: 'INITIAL',
+  pending: 'PENDING',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+}
+
 class PopularRestaurants extends Component {
   state = {
     searchInput: '',
-    offset: 0,
     LIMIT: 9,
-    sortFrom: 'Highest',
+    sortFrom: sortByOptions[1].value,
     restaurantsList: [],
-    isLoading: false,
+    apiStatus: apiStatusComponent.initial,
     activePageNumber: 1,
   }
 
@@ -46,8 +67,9 @@ class PopularRestaurants extends Component {
   }
 
   getPopularRestaurants = async () => {
-    this.setState({isLoading: true})
-    const {searchInput, offset, LIMIT, sortFrom} = this.state
+    this.setState({apiStatus: apiStatusComponent.pending})
+    const {searchInput, LIMIT, sortFrom, activePageNumber} = this.state
+    const offset = (activePageNumber - 1) * LIMIT
     const token = Cookies.get('jwt_token')
     // const apiUrl = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=${LIMIT}`
     const apiUrl = `https://apis.ccbp.in/restaurants-list?search=${searchInput}&offset=${offset}&limit=${LIMIT}&sort_by_rating=${sortFrom}`
@@ -62,30 +84,30 @@ class PopularRestaurants extends Component {
     if (response.ok === true) {
       const data = await response.json()
       const updatedList = this.convertIntoPascalCase(data.restaurants)
-      this.setState({restaurantsList: updatedList, isLoading: false})
+      this.setState({
+        restaurantsList: updatedList,
+        apiStatus: apiStatusComponent.success,
+      })
+    } else {
+      this.setState({apiStatus: apiStatusComponent.failure})
     }
   }
 
   moveToNextPage = () => {
-    const {activePageNumber, LIMIT, restaurantsList} = this.state
+    const {LIMIT, restaurantsList} = this.state
     if (restaurantsList.length === LIMIT) {
-      const newActivePage = activePageNumber + 1
-      const newOffset = (newActivePage - 1) * LIMIT
-
       this.setState(
-        {activePageNumber: newActivePage, offset: newOffset},
+        prevState => ({activePageNumber: prevState.activePageNumber + 1}),
         this.getPopularRestaurants,
       )
     }
   }
 
   moveToPreviousPage = () => {
-    const {activePageNumber, LIMIT} = this.state
+    const {activePageNumber} = this.state
     if (activePageNumber > 1) {
-      const newActivePage = activePageNumber - 1
-      const newOffset = (newActivePage - 1) * LIMIT
       this.setState(
-        {activePageNumber: newActivePage, offset: newOffset},
+        prevState => ({activePageNumber: prevState.activePageNumber - 1}),
         this.getPopularRestaurants,
       )
     }
@@ -95,6 +117,30 @@ class PopularRestaurants extends Component {
     this.setState({sortFrom: event.target.value}, this.getPopularRestaurants)
   }
 
+  onSearchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  searchRestaurant = event => {
+    if (event.key === 'Enter' || event.type === 'click') {
+      this.getPopularRestaurants()
+    }
+  }
+
+  resetState = () => {
+    this.setState(
+      {
+        searchInput: '',
+        LIMIT: 9,
+        sortFrom: sortByOptions[1].value,
+        restaurantsList: [],
+        apiStatus: apiStatusComponent.initial,
+        activePageNumber: 1,
+      },
+      this.getPopularRestaurants,
+    )
+  }
+
   renderLoader = () => (
     <div testid="restaurants-list-loader" className="loader-container">
       <Loader type="Oval" color="#F7931E" height="40" width="40" />
@@ -102,8 +148,13 @@ class PopularRestaurants extends Component {
   )
 
   renderRestaurantsList = () => {
-    const {restaurantsList, activePageNumber} = this.state
-    const {sortByOptions} = this.props
+    const {
+      restaurantsList,
+      activePageNumber,
+      sortFrom,
+      searchInput,
+    } = this.state
+
     return (
       <div className="list-container">
         <h1 className="popular-restaurants-heading">Popular Restaurants</h1>
@@ -113,12 +164,12 @@ class PopularRestaurants extends Component {
             happy...
           </p>
           <div className="filter-container">
-            <MdSort className="sorting-icon" />
+            <BsFilterLeft className="sorting-icon" />
             <p className="sort-by">Sort By</p>
             <select
               onChange={this.onSortBy}
               className="sorting-options"
-              defaultValue="Lowest"
+              value={sortFrom}
             >
               {sortByOptions.map(eachOption => (
                 <option
@@ -130,6 +181,23 @@ class PopularRestaurants extends Component {
                 </option>
               ))}
             </select>
+          </div>
+          <div className="search-input-container">
+            <input
+              onChange={this.onSearchInput}
+              value={searchInput}
+              type="search"
+              className="search-input"
+              placeholder="Search"
+              onKeyUp={this.searchRestaurant}
+            />
+            <button
+              onClick={this.searchRestaurant}
+              className="search-button"
+              type="button"
+            >
+              <GoSearch />
+            </button>
           </div>
         </div>
         <hr className="hr" />
@@ -165,11 +233,38 @@ class PopularRestaurants extends Component {
     )
   }
 
+  renderFailure = () => (
+    <div className="failure-container">
+      <h1 className="failure-heading">Restaurant Not Found!</h1>
+
+      <button
+        onClick={this.resetState}
+        type="button"
+        className="try-again-button"
+      >
+        Try Another Restaurant
+      </button>
+    </div>
+  )
+
+  renderRestaurantPage = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusComponent.pending:
+        return this.renderLoader()
+      case apiStatusComponent.success:
+        return this.renderRestaurantsList()
+      case apiStatusComponent.failure:
+        return this.renderFailure()
+      default:
+        return null
+    }
+  }
+
   render() {
-    const {isLoading} = this.state
     return (
       <div className="popular-restaurants-container">
-        {isLoading ? this.renderLoader() : this.renderRestaurantsList()}
+        {this.renderRestaurantPage()}
       </div>
     )
   }
