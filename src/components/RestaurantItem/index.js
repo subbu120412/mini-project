@@ -10,7 +10,7 @@ const RestaurantItem = props => {
     const opensAtTime = opensAt.split(',')[0]
     const opensAtHours = Number(opensAtTime.slice(0, 2))
 
-    if (opensAtHours < currentTime) {
+    if (opensAtHours <= currentTime) {
       return ['Currently Open, Closes At 12:00 AM', 'open-class']
     }
     return [`Opens at ${opensAt}`, 'close-class']

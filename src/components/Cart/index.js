@@ -48,10 +48,11 @@ class Cart extends Component {
 
   showCartItems = () => {
     const {cartList} = this.state
-    const totalPrice = cartList.reduce(
-      (total, eachItem) => total + eachItem.quantity * eachItem.cost,
-      0,
-    )
+    let totalPrice = 0
+
+    cartList.forEach(eachProduct => {
+      totalPrice += eachProduct.quantity * eachProduct.cost
+    })
 
     return (
       <div className="cart-items-list-container">
@@ -75,7 +76,7 @@ class Cart extends Component {
             <h1 className="total-price-heading">Order Total:</h1>
             <div className="total-price ">
               <p className="total-price">₹</p>
-              <p testid="total-price">{totalPrice.toFixed(2)}</p>
+              <p testid="total-price">{totalPrice}</p>
             </div>
           </div>
           <Link className="link place-order-button" to="/payment">

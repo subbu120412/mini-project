@@ -14,7 +14,7 @@ const Payment = () => (
     </p>
     <Link to="/">
       <button className="not-found-button" type="button">
-        Go To Home
+        Go To Home Page
       </button>
     </Link>
   </div>
